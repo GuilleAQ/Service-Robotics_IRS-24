@@ -16,6 +16,7 @@
 - [Task description](#Task-description)
 - [Robot API](#Robot-API)
 - [Coordinate to Pixel Conversion](#Coordinate-to-Pixel-Conversion)
+- [Compute Image](#Compute-Image)
 
 
 ## Task description
@@ -97,4 +98,5 @@ The obtanined results:
 <img width=600px src="https://github.com/GuilleAQ/Service-Robotics_IRS-24/blob/main/P1/resources/figures/9.png" alt="explode"></a> 
 </div>
 
+## Compute Image
 
