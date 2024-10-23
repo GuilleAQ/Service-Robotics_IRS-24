@@ -16,6 +16,7 @@
 - [Task description](#Task-description)
 - [Robot API](#Robot-API)
 - [convert latitude and longitude coordinates to x and y](#convert-latitude-and-longitude-coordinates-to-x-and-y)
+- [Create an imaginary area around the survivors](#Create-an-imaginary-area-around-the-survivors)
 
 
 ## Task description
@@ -137,3 +138,32 @@ Two values: the x and y coordinates in meters relative to the reference point (0
 ```py
 calculate_dms_coordinates("40º16’47.23”N", "3º49’01.78”W")  # Returns something like (40.58, -29.99)
 ```
+
+
+## Create an imaginary area around the survivors
+
+Once we have the point provided in DMS (degrees, minutes, seconds) format converted to decimal, we can see that the survivors' area is in the fourth quadrant, as the ship is located at (0,0) and the given point is at (40, -30). Now, we need to create an imaginary area and scan the zone to search for survivors. 
+
+We select the point given in the wiki as the upper-right corner of the rectangle that we will use as the search area (northeast corner).
+
+```py
+# Define the corners of a rectangle area at the point where we are told that the accident occurred
+area_limits = [(x_accident, y_accident), # NORTH EAST
+               (x_accident - AXIS_X_OFFSET, y_accident), # NORTH WEST
+               (x_accident - AXIS_X_OFFSET, y_accident - AXIS_Y_OFFSET), # SOUTH WEST
+               (x_accident, y_accident - AXIS_Y_OFFSET)] # SOUTH EAST
+```
+
+With the offset constants, we move along the 2D space.
+
+Below, you can see an illustration of this explanation.
+
+<div align="center">
+<img width=600px src="https://github.com/GuilleAQ/Service-Robotics_IRS-24/blob/main/P2/resources/figures/2.png" alt="explode"></a> 
+</div>
+
+
+
+
+
+
