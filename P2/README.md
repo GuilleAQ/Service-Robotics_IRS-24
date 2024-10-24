@@ -17,6 +17,7 @@
 - [Robot API](#Robot-API)
 - [convert latitude and longitude coordinates to x and y](#convert-latitude-and-longitude-coordinates-to-x-and-y)
 - [Create an imaginary area around the survivors](#Create-an-imaginary-area-around-the-survivors)
+- [Zigzag Sweep for Area Coverage](#Zigzag-Sweep-for-Area-Coverage)
 
 
 ## Task description
@@ -160,6 +161,38 @@ Below, you can see an illustration of this explanation.
 
 <div align="center">
 <img width=600px src="https://github.com/GuilleAQ/Service-Robotics_IRS-24/blob/main/P2/resources/figures/2.png" alt="explode"></a> 
+</div>
+
+
+## Zigzag Sweep for Area Coverage
+The goal of this code is to generate a set of waypoints that a navigation system of the drone can follow to cover a rectangular area. The trajectory follows a zigzag pattern, alternating between 
+east-to-west and west-to-east movements, and descending one unit along the Y-axis (north to south) after each pass.
+
+*generate_waypoints()* Function
+
+**Parameters**
+
+The system requires the following input parameters to define the area:
+
+- x_accident: X-coordinate of the northeast corner of the area to cover.
+- y_accident: Y-coordinate of the northeast corner of the area to cover.
+- AXIS_X_OFFSET: Horizontal displacement along the X-axis (width of the area).
+- AXIS_Y_OFFSET: Vertical displacement along the Y-axis (height of the area).
+
+**Return**
+
+This function is responsible for generating the waypoints (coordinates) that the navigation system will follow to cover the area. List of tuples (x, y) with waypoints.
+
+**Usage**
+
+```py
+  waypoints = generate_waypoints(x_accident, y_accident, AXIS_X_OFFSET, AXIS_Y_OFFSET)
+```
+
+You can see the trajectory bellow
+
+<div align="center">
+<img width=600px src="https://github.com/GuilleAQ/Service-Robotics_IRS-24/blob/main/P2/resources/figures/3.png" alt="explode"></a> 
 </div>
 
 
