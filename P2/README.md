@@ -244,6 +244,6 @@ the function returns False, indicating the position is too close to an existing 
 
 I have to say that the simulation does not work the same when recording the screen, in the simulation it detects four bodies and in reality it detects all (six).
 
-[video demo at x4 speed](#https://urjcmy.sharepoint.com/:v:/r/personal/g_alcocer_2020_alumnos_urjc_es/Documents/RescuePeople.mp4csf=1&web=1&e=hBE4DK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+[video demo at x4 speed](https://urjcmy.sharepoint.com/:v:/r/personal/g_alcocer_2020_alumnos_urjc_es/Documents/RescuePeople.mp4csf=1&web=1&e=hBE4DK&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
 
