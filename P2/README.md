@@ -18,6 +18,8 @@
 - [convert latitude and longitude coordinates to x and y](#convert-latitude-and-longitude-coordinates-to-x-and-y)
 - [Create an imaginary area around the survivors](#Create-an-imaginary-area-around-the-survivors)
 - [Zigzag Sweep for Area Coverage](#Zigzag-Sweep-for-Area-Coverage)
+- [Person detectection and estimate position](#Person-detectection-and-estimate-position)
+- [Video demo](#Video-demo)
 
 
 ## Task description
@@ -195,8 +197,53 @@ You can see the trajectory bellow
 <img width=600px src="https://github.com/GuilleAQ/Service-Robotics_IRS-24/blob/main/P2/resources/figures/3.png" alt="explode"></a> 
 </div>
 
+## Person detectection and estimate position
+
+#### detect_person_by_color(image)
+
+Detects a person whose body color is light green in the provided image.
+This function is responsible for detecting areas in the image that match the light green color range, which is assumed to be the color of the person’s body.
+
+- *Convert Image to HSV*: The image is first converted from BGR to HSV color space, which is more effective for color detection.
+- *Color Range Definition*: A light green color range is defined using lower and upper HSV values.
+- *lower_green* = np.array([30, 40, 40])
+- *upper_green* = np.array([90, 255, 255])
+- *Mask Creation*: A mask is generated that highlights regions of the image within the light green color range.
+- *Morphological Operations*: A closing operation is applied to clean up the mask and remove small artifacts.
+- *Contour Detection*: Contours are found in the mask to identify the potential areas where the person might be.
+- *Contour Area Filtering*: Only contours with an area larger than a pre-defined threshold (CONTOUR_AREA) are considered valid detections. I do it
+to differentiate contours that can be the size of a body, the height of the drone influences and that is why it is parameterized, to adjust it to the application and the context.
+- *Centroid Calculation*: The centroid (center of mass) of the valid contour is calculated, which serves as the detected position of the person in image coordinates.
+
+*The function returns*:
+
+- [True, (cx, cy)]: If a person is detected (with the centroid of the contour in image coordinates).
+- [False, (0, 0)]: If no person is detected.
+
+I decided to do it this way because although the initial idea was to recognize faces, it was getting complicated and asking colleagues,
+I took ideas and decided to recognize the person by the body.
+
+#### estimate_person_position(dron_position, contour_center)
+
+Converts the detected person's position in the image to a real-world position based on the drone's coordinates. with round_pose(pose), rounds the coordinates of
+the detected person to one decimal place.
+
+The person is assumed to be directly below the drone. Thus, the person's position in the x-y plane is the same as the drone's x-y position.
+This simplifies the conversion from image to real-world coordinates.
+
+*return*: The estimated real-world coordinates of the person (person_x, person_y).
+
+#### is_new_person_position(new_pose, saved_poses)
+
+Checks if the newly detected person is far enough from previous detections to be considered a new position.
+The function compares the new position to each saved position. If the absolute difference in x or y coordinates is less than a pre-defined THRESHOLD,
+the function returns False, indicating the position is too close to an existing detection.
 
 
+## Video demo
 
+I have to say that the simulation does not work the same when recording the screen, in the simulation it detects four bodies and in reality it detects all (six).
+
+()[#]
 
 
